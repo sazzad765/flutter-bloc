@@ -1,5 +1,6 @@
-import 'package:bloc_example/products/bloc/data.dart';
-import 'package:bloc_example/products/product.dart';
+import 'package:bloc_example/injection_service.dart';
+import 'package:bloc_example/models/product.dart';
+import 'package:bloc_example/view/products/repo/product_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,14 +15,13 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<UpdateProduct>(_mapUpdateProductEventToState);
   }
 
-  // final GameRepository gameRepository;
+  final _repo = di.get<ProductRepository>();
 
   void _mapGetProductsEventToState(
       GetProducts event, Emitter<ProductState> emit) async {
     emit(state.copyWith(status: ProductStatus.loading));
     try {
-      final products =
-          List<Product>.from(productsData.map((x) => Product.fromJson(x)));
+      final products = await _repo.getProducts();
       emit(
         state.copyWith(
           status: ProductStatus.success,

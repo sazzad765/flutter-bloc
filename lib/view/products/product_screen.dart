@@ -1,8 +1,7 @@
-import 'package:bloc_example/products/bloc/product_bloc.dart';
-import 'package:bloc_example/products/product.dart';
-import 'package:bloc_example/products/product_item.dart';
-import 'package:bloc_example/products/update_item.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:bloc_example/view/products/bloc/product_bloc.dart';
+import 'package:bloc_example/models/product.dart';
+import 'package:bloc_example/view/products/product_item.dart';
+import 'package:bloc_example/view/products/update_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,13 +27,23 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
         appBar: AppBar(title: const Text('Products')),
         body: BlocBuilder<ProductBloc, ProductState>(
-          buildWhen: (previous, current) => current.status.isSuccess || current.status.isUpdate,
+          buildWhen: (previous, current) =>
+              current.status.isSuccess || current.status.isUpdate,
           builder: (context, state) {
+            if (state.status == ProductStatus.loading) {
+              return const Center(
+                child: CircularProgressIndicator(color: Colors.red),
+              );
+            }
+            if (state.status == ProductStatus.initial) {
+              return const Center(
+                child: CircularProgressIndicator(color: Colors.red),
+              );
+            }
             return ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               itemBuilder: (context, index) {
                 return ProductItem(
-                  // key: ValueKey('${state.products[index].title}$index'),
                   product: state.products[index],
                   callback: (Product productSelected) {
                     context.read<ProductBloc>().add(

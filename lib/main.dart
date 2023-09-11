@@ -1,9 +1,11 @@
-import 'package:bloc_example/products/bloc/product_bloc.dart';
-import 'package:bloc_example/products/product_screen.dart';
+import 'package:bloc_example/injection_service.dart' as di;
+import 'package:bloc_example/view/products/bloc/product_bloc.dart';
+import 'package:bloc_example/view/products/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  di.setup();
   runApp(const MyApp());
 }
 
@@ -15,10 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ProductBloc>(
-          create: (context) => ProductBloc(
-              // gameRepository: context.read<GameRepository>(),
-              )
-            ..add(GetProducts()),
+          create: (context) => ProductBloc()..add(GetProducts()),
         ),
       ],
       child: MaterialApp(
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.amber,
         ),
-        home: ProductScreen(),
+        home: const ProductScreen(),
       ),
     );
   }

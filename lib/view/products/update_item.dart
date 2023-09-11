@@ -1,5 +1,5 @@
-import 'package:bloc_example/products/bloc/product_bloc.dart';
-import 'package:bloc_example/products/product.dart';
+import 'package:bloc_example/view/products/bloc/product_bloc.dart';
+import 'package:bloc_example/models/product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +13,7 @@ class UpdateItem extends StatefulWidget {
 }
 
 class _UpdateItemState extends State<UpdateItem> {
-  TextEditingController _textFieldController = TextEditingController();
+  final TextEditingController _textFieldController = TextEditingController();
 
   @override
   void initState() {
@@ -27,11 +27,7 @@ class _UpdateItemState extends State<UpdateItem> {
       return AlertDialog(
         title: const Text('TextField in Dialog'),
         content: TextField(
-          onChanged: (value) {
-            // setState(() {
-            //   valueText = value;
-            // });
-          },
+          onChanged: (value) {},
           controller: _textFieldController,
           decoration: const InputDecoration(hintText: "Text Field in Dialog"),
         ),
