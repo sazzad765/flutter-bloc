@@ -1,7 +1,7 @@
-import 'package:bloc_example/bloc/product_bloc.dart';
-import 'package:bloc_example/product.dart';
-import 'package:bloc_example/product_item.dart';
-import 'package:bloc_example/update_item.dart';
+import 'package:bloc_example/products/bloc/product_bloc.dart';
+import 'package:bloc_example/products/product.dart';
+import 'package:bloc_example/products/product_item.dart';
+import 'package:bloc_example/products/update_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

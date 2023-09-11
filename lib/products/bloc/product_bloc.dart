@@ -1,5 +1,5 @@
-import 'package:bloc_example/bloc/data.dart';
-import 'package:bloc_example/product.dart';
+import 'package:bloc_example/products/bloc/data.dart';
+import 'package:bloc_example/products/product.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
