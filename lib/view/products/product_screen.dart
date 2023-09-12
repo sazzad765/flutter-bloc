@@ -1,3 +1,5 @@
+import 'package:bloc_example/service/theme_bloc/theme_cubit.dart';
+import 'package:bloc_example/utils/custom_themes.dart';
 import 'package:bloc_example/view/products/bloc/product_bloc.dart';
 import 'package:bloc_example/models/product.dart';
 import 'package:bloc_example/view/products/product_item.dart';
@@ -25,7 +27,19 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Products')),
+        appBar: AppBar(title: const Text('Products'), actions: [
+          BlocBuilder<ThemeCubit, AppTheme>(
+            builder: (context, state) {
+              return Switch(
+                value: state == AppTheme.lightMode,
+                onChanged: (value) {
+                  context.read<ThemeCubit>().changeTheme(
+                      value ? AppTheme.lightMode : AppTheme.darkMode);
+                },
+              );
+            },
+          )
+        ]),
         body: BlocBuilder<ProductBloc, ProductState>(
           buildWhen: (previous, current) =>
               current.status.isSuccess || current.status.isUpdate,
