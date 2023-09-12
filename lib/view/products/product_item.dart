@@ -52,9 +52,9 @@ class ProductItem extends StatelessWidget {
                 Text(
                   product.title ?? '',
                   style: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87),
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                   textAlign: TextAlign.center,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -62,9 +62,9 @@ class ProductItem extends StatelessWidget {
                 Text(
                   product.description ?? '',
                   style: const TextStyle(
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87),
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
