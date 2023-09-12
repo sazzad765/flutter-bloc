@@ -19,6 +19,7 @@ extension ProductStatusX on ProductStatus {
 class ProductState extends Equatable {
   const ProductState({
     this.status = ProductStatus.initial,
+    this.updateStatus = ProductStatus.initial,
     List<Product>? products,
     this.idSelected = 0,
   }) : products = products ?? const [];
@@ -26,19 +27,22 @@ class ProductState extends Equatable {
   final List<Product> products;
   final ProductStatus status;
   final int idSelected;
-
-  @override
-  List<Object?> get props => [status, products, idSelected];
+  final ProductStatus updateStatus;
 
   ProductState copyWith({
     List<Product>? products,
     ProductStatus? status,
+    ProductStatus? updateStatus,
     int? idSelected,
   }) {
     return ProductState(
       products: products ?? this.products,
       status: status ?? this.status,
+      updateStatus: updateStatus ?? this.updateStatus,
       idSelected: idSelected ?? this.idSelected,
     );
   }
+
+  @override
+  List<Object?> get props => [status, products, idSelected, updateStatus];
 }

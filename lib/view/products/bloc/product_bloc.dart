@@ -46,11 +46,18 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
   void _mapUpdateProductEventToState(
       UpdateProduct event, Emitter<ProductState> emit) async {
+    emit(
+      state.copyWith(
+        updateStatus: ProductStatus.loading,
+      ),
+    );
+    await Future.delayed(const Duration(seconds: 3));
     final product =
         state.products.firstWhere((element) => element.id == event.id);
     product.title = event.name;
     emit(
       state.copyWith(
+        updateStatus: ProductStatus.success,
         status: ProductStatus.update,
         products: state.products,
       ),

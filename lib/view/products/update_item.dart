@@ -23,7 +23,11 @@ class _UpdateItemState extends State<UpdateItem> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductBloc, ProductState>(builder: (context, state) {
+    return BlocConsumer<ProductBloc, ProductState>(listener: (context, state) {
+      if (state.updateStatus == ProductStatus.success) {
+        Navigator.pop(context);
+      }
+    }, builder: (context, state) {
       return AlertDialog(
         title: const Text('TextField in Dialog'),
         content: TextField(
@@ -32,21 +36,23 @@ class _UpdateItemState extends State<UpdateItem> {
           decoration: const InputDecoration(hintText: "Text Field in Dialog"),
         ),
         actions: <Widget>[
-          MaterialButton(
-            color: Colors.green,
-            textColor: Colors.white,
-            child: const Text('OK'),
-            onPressed: () {
-              context.read<ProductBloc>().add(
-                    UpdateProduct(
-                      id: widget.product.id ?? 0,
-                      name: _textFieldController.text,
-                    ),
-                  );
+          state.updateStatus == ProductStatus.loading
+              ? const Center(child: CircularProgressIndicator())
+              : MaterialButton(
+                  color: Colors.green,
+                  textColor: Colors.white,
+                  child: const Text('OK'),
+                  onPressed: () {
+                    context.read<ProductBloc>().add(
+                          UpdateProduct(
+                            id: widget.product.id ?? 0,
+                            name: _textFieldController.text,
+                          ),
+                        );
 
-              Navigator.pop(context);
-            },
-          ),
+                    // Navigator.pop(context);
+                  },
+                ),
         ],
       );
     });

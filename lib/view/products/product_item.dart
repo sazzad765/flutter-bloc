@@ -29,7 +29,7 @@ class ProductItem extends StatelessWidget {
                 : false,
         builder: (context, state) {
           return Container(
-            margin: EdgeInsets.only(bottom: 16),
+            margin: const EdgeInsets.only(bottom: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -44,14 +44,14 @@ class ProductItem extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: state ? Colors.deepOrangeAccent : Colors.amberAccent,
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Icons.gamepad_outlined,
                   ),
                 ),
-                SizedBox(height: 4.0),
+                const SizedBox(height: 4.0),
                 Text(
                   product.title ?? '',
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87),
@@ -61,7 +61,7 @@ class ProductItem extends StatelessWidget {
                 ),
                 Text(
                   product.description ?? '',
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 12.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87),
