@@ -1,38 +1,38 @@
 part of 'product_bloc.dart';
 
-enum ProductStatus { initial, success, error, loading, selected, update }
-
-extension ProductStatusX on ProductStatus {
-  bool get isInitial => this == ProductStatus.initial;
-
-  bool get isSuccess => this == ProductStatus.success;
-
-  bool get isError => this == ProductStatus.error;
-
-  bool get isLoading => this == ProductStatus.loading;
-
-  bool get isSelected => this == ProductStatus.selected;
-
-  bool get isUpdate => this == ProductStatus.update;
-}
+// enum Status { initial, success, error, loading, selected, update }
+//
+// extension StatusX on Status {
+//   bool get isInitial => this == Status.initial;
+//
+//   bool get isSuccess => this == Status.success;
+//
+//   bool get isError => this == Status.error;
+//
+//   bool get isLoading => this == Status.loading;
+//
+//   bool get isSelected => this == Status.selected;
+//
+//   bool get isUpdate => this == Status.update;
+// }
 
 class ProductState extends Equatable {
   const ProductState({
-    this.status = ProductStatus.initial,
-    this.updateStatus = ProductStatus.initial,
+    this.status = Status.initial,
+    this.updateStatus = Status.initial,
     List<Product>? products,
     this.idSelected = 0,
   }) : products = products ?? const [];
 
-  final List<Product> products;
-  final ProductStatus status;
-  final int idSelected;
-  final ProductStatus updateStatus;
+  final List<Product> products; //product list
+  final Status status; //status
+  final int idSelected; //selected item id
+  final Status updateStatus; //item update status
 
   ProductState copyWith({
     List<Product>? products,
-    ProductStatus? status,
-    ProductStatus? updateStatus,
+    Status? status,
+    Status? updateStatus,
     int? idSelected,
   }) {
     return ProductState(

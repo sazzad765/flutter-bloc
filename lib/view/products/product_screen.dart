@@ -1,11 +1,11 @@
-import 'package:bloc_example/service/theme_bloc/theme_cubit.dart';
-import 'package:bloc_example/utils/custom_themes.dart';
 import 'package:bloc_example/view/products/bloc/product_bloc.dart';
 import 'package:bloc_example/models/product.dart';
 import 'package:bloc_example/view/products/product_item.dart';
 import 'package:bloc_example/view/products/update_item.dart';
+import 'package:bloc_example/view/theme/theme_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc_example/utils/status.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({Key? key}) : super(key: key);
@@ -27,29 +27,19 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Products'), actions: [
-          BlocBuilder<ThemeCubit, AppTheme>(
-            builder: (context, state) {
-              return Switch(
-                value: state == AppTheme.lightMode,
-                onChanged: (value) {
-                  context.read<ThemeCubit>().changeTheme(
-                      value ? AppTheme.lightMode : AppTheme.darkMode);
-                },
-              );
-            },
-          )
+        appBar: AppBar(title: const Text('Products'), actions: const [
+          ThemeButton(),
         ]),
         body: BlocBuilder<ProductBloc, ProductState>(
           buildWhen: (previous, current) =>
               current.status.isSuccess || current.status.isUpdate,
           builder: (context, state) {
-            if (state.status == ProductStatus.loading) {
+            if (state.status == Status.loading) {
               return const Center(
                 child: CircularProgressIndicator(color: Colors.red),
               );
             }
-            if (state.status == ProductStatus.initial) {
+            if (state.status == Status.initial) {
               return const Center(
                 child: CircularProgressIndicator(color: Colors.red),
               );
