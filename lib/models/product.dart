@@ -1,4 +1,6 @@
-class Product {
+import 'package:equatable/equatable.dart';
+
+class Product extends Equatable {
   int? id;
   String? title;
   String? description;
@@ -26,30 +28,37 @@ class Product {
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-    id: json["id"],
-    title: json["title"],
-    description: json["description"],
-    price: json["price"],
-    discountPercentage: json["discountPercentage"]?.toDouble(),
-    rating: json["rating"]?.toDouble(),
-    stock: json["stock"],
-    brand: json["brand"],
-    category: json["category"],
-    thumbnail: json["thumbnail"],
-    images: json["images"] == null ? [] : List<String>.from(json["images"]!.map((x) => x)),
-  );
+        id: json["id"],
+        title: json["title"],
+        description: json["description"],
+        price: json["price"],
+        discountPercentage: json["discountPercentage"]?.toDouble(),
+        rating: json["rating"]?.toDouble(),
+        stock: json["stock"],
+        brand: json["brand"],
+        category: json["category"],
+        thumbnail: json["thumbnail"],
+        images: json["images"] == null
+            ? []
+            : List<String>.from(json["images"]!.map((x) => x)),
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "title": title,
-    "description": description,
-    "price": price,
-    "discountPercentage": discountPercentage,
-    "rating": rating,
-    "stock": stock,
-    "brand": brand,
-    "category": category,
-    "thumbnail": thumbnail,
-    "images": images == null ? [] : List<dynamic>.from(images!.map((x) => x)),
-  };
+        "id": id,
+        "title": title,
+        "description": description,
+        "price": price,
+        "discountPercentage": discountPercentage,
+        "rating": rating,
+        "stock": stock,
+        "brand": brand,
+        "category": category,
+        "thumbnail": thumbnail,
+        "images":
+            images == null ? [] : List<dynamic>.from(images!.map((x) => x)),
+      };
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [id, title];
 }

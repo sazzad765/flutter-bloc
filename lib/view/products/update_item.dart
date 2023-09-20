@@ -1,6 +1,6 @@
 import 'package:bloc_example/view/products/bloc/product_bloc.dart';
 import 'package:bloc_example/models/product.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:bloc_example/utils/status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,7 +24,7 @@ class _UpdateItemState extends State<UpdateItem> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ProductBloc, ProductState>(listener: (context, state) {
-      if (state.updateStatus == ProductStatus.success) {
+      if (state.updateStatus == Status.success) {
         Navigator.pop(context);
       }
     }, builder: (context, state) {
@@ -36,7 +36,7 @@ class _UpdateItemState extends State<UpdateItem> {
           decoration: const InputDecoration(hintText: "Text Field in Dialog"),
         ),
         actions: <Widget>[
-          state.updateStatus == ProductStatus.loading
+          state.updateStatus == Status.loading
               ? const Center(child: CircularProgressIndicator())
               : MaterialButton(
                   color: Colors.green,
