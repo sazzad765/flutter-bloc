@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
+import 'dart:developer' as logdev;
 
 class CustomInterceptors extends InterceptorsWrapper {
   CustomInterceptors();
@@ -15,15 +18,15 @@ class CustomInterceptors extends InterceptorsWrapper {
         'Content-Type': 'application/json'
       });
     }
-    print(
-        'url: ${options.baseUrl}${options.path} headers: ${options.headers}  Q: ${options.queryParameters}  ');
-    print('Data: ${options.data}');
+
+    logdev.log(
+        'url: ${options.baseUrl}${options.path} headers: ${options.headers}  Q: ${options.queryParameters} Data: ${options.data}');
     return handler.next(options);
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
-    print(err);
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    logdev.log(jsonEncode(err));
     return handler.next(err);
   }
 
@@ -34,7 +37,8 @@ class CustomInterceptors extends InterceptorsWrapper {
     //     message: response.statusMessage ?? '',
     //     data: response.statusCode == 200 ? response.data : null);
     // response.data = newResponse.toJson();
-    print(response);
+    logdev.log('${response.realUri}');
+    logdev.log(jsonEncode(response.data));
     return handler.next(response);
   }
 }

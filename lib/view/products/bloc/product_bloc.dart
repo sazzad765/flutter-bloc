@@ -1,4 +1,4 @@
-import 'package:bloc_example/injection_service.dart';
+import 'package:bloc_example/service/injection_service.dart';
 import 'package:bloc_example/models/product.dart';
 import 'package:bloc_example/utils/status.dart';
 import 'package:bloc_example/view/products/repo/product_repository.dart';

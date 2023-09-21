@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:bloc_example/injection_service.dart';
+import 'package:bloc_example/service/injection_service.dart';
+import 'package:bloc_example/utils/custom_themes.dart';
 import 'package:bloc_example/view/theme/repo/theme_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -13,16 +14,15 @@ class ThemeCubit extends Cubit<ThemeState> {
 
   final _repo = di.get<ThemeRepository>();
   late StreamSubscription<CustomTheme> _themeSubscription;
-  static late bool _isDarkTheme;
+
+
 
   void getCurrentTheme() {
     _themeSubscription = _repo.getTheme().listen(
       (customTheme) {
         if (customTheme.name == CustomTheme.light.name) {
-          _isDarkTheme = false;
           emit(state.copyWith(themeMode: ThemeMode.light));
         } else {
-          _isDarkTheme = true;
           emit(state.copyWith(themeMode: ThemeMode.dark));
         }
       },
@@ -30,7 +30,8 @@ class ThemeCubit extends Cubit<ThemeState> {
   }
 
   void switchTheme() {
-    if (_isDarkTheme) {
+
+    if (state.themeMode == ThemeMode.dark) {
       // Since, currentTheme is dark, after switching we want light theme to
       // be persisted.
       _repo.saveTheme(CustomTheme.light);

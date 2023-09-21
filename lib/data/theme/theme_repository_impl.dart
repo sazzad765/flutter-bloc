@@ -1,32 +1,31 @@
 import 'dart:async';
 
+import 'package:bloc_example/service/shared_pref.dart';
 import 'package:bloc_example/view/theme/repo/theme_repository.dart';
 import 'package:get_storage/get_storage.dart';
 
 class ThemeRepositoryImpl implements ThemeRepository {
-  ThemeRepositoryImpl() {
+  ThemeRepositoryImpl({required SharePref sharedPref})
+      : _sharedPref = sharedPref {
     _init();
   }
 
-  final _sharedPref = GetStorage();
-
-  static const _kThemePersistenceKey = '__theme_persistence_key__';
+  final SharePref _sharedPref;
 
   final _controller = StreamController<CustomTheme>();
 
-  String? _getValue(String key) {
+  String? _getValue() {
     try {
-      return _sharedPref.read(key);
+      return _sharedPref.getTheme();
     } catch (_) {
       return null;
     }
   }
 
-  Future<void> _setValue(String key, String value) =>
-      _sharedPref.write(key, value);
+  Future<void> _setValue(String value) => _sharedPref.setTheme(value);
 
   void _init() {
-    final themeString = _getValue(_kThemePersistenceKey);
+    final themeString = _getValue();
     if (themeString != null) {
       if (themeString == CustomTheme.light.name) {
         _controller.add(CustomTheme.light);
@@ -44,7 +43,7 @@ class ThemeRepositoryImpl implements ThemeRepository {
   @override
   Future<void> saveTheme(CustomTheme theme) {
     _controller.add(theme);
-    return _setValue(_kThemePersistenceKey, theme.name);
+    return _setValue(theme.name);
   }
 
   @override
