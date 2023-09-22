@@ -27,12 +27,10 @@ class MyApp extends StatelessWidget {
             create: (context) => ProductBloc()..add(GetProducts()),
           ),
         ],
-        child: BlocBuilder<ThemeCubit, ThemeState>(
+        child: BlocBuilder<ThemeCubit, AppTheme>(
           builder: (context, state) => MaterialApp(
             title: 'Product',
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: state.themeMode,
+            theme: AppThemes.appThemeData[state],
             home: const ProductScreen(),
           ),
         ));

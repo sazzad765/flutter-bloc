@@ -9,7 +9,7 @@ import 'package:dio/dio.dart';
 Future<void> setupServiceModule() async {
   di.registerLazySingleton<RestClient>(() => RestClient(Dio(BaseOptions(
       contentType: "application/json", baseUrl: ConstString.baseUrl))
-    ..interceptors.add(CustomInterceptors())));
+    ..interceptors.add(CustomInterceptors(sharePref: di()))));
 
   di.registerLazySingleton<SharePref>(() => SharePrefImpl());
 }

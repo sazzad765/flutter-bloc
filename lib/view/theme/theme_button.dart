@@ -1,3 +1,4 @@
+import 'package:bloc_example/utils/custom_themes.dart';
 import 'package:bloc_example/view/theme/theme_bloc/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,9 +8,9 @@ class ThemeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<ThemeCubit, ThemeState, bool>(
+    return BlocSelector<ThemeCubit, AppTheme, bool>(
       selector: (state) {
-        return state.themeMode == ThemeMode.light;
+        return state == AppTheme.light;
       },
       builder: (context, state) {
         return Switch(

@@ -32,7 +32,9 @@ class _ProductScreenState extends State<ProductScreen> {
         ]),
         body: BlocBuilder<ProductBloc, ProductState>(
           buildWhen: (previous, current) =>
-              current.status.isSuccess || current.status.isUpdate,
+              current.status.isSuccess ||
+              current.status.isUpdate ||
+              current.status.isError,
           builder: (context, state) {
             if (state.status == Status.loading) {
               return const Center(
@@ -42,6 +44,12 @@ class _ProductScreenState extends State<ProductScreen> {
             if (state.status == Status.initial) {
               return const Center(
                 child: CircularProgressIndicator(color: Colors.red),
+              );
+            }
+
+            if (state.status == Status.error) {
+              return const Center(
+                child: Text("No data found!"),
               );
             }
             return ListView.builder(

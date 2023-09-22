@@ -1,18 +1,22 @@
 import 'dart:convert';
 
+import 'package:bloc_example/service/injection_service.dart';
+import 'package:bloc_example/service/shared_pref.dart';
 import 'package:dio/dio.dart';
 import 'dart:developer' as logdev;
 
 class CustomInterceptors extends InterceptorsWrapper {
-  CustomInterceptors();
+  CustomInterceptors({
+    required SharePref sharePref,
+  }) : _sharePref = sharePref;
 
-  // SharedPref pref;
+  final SharePref _sharePref;
 
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    String token = '';
-    if (token != '') {
+    String? token = _sharePref.getToken();
+    if (token != null) {
       options.headers.addAll({
         'Authorization': 'Bearer $token',
         'Content-Type': 'application/json'
