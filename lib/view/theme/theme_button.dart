@@ -1,4 +1,4 @@
-import 'package:bloc_example/utils/custom_themes.dart';
+import 'package:bloc_example/utils/theme/custom_themes.dart';
 import 'package:bloc_example/view/theme/theme_bloc/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,3 +1,3 @@
 class ConstString {
-  static const baseUrl = ''; //test
+  static const baseUrl = '';
 }
