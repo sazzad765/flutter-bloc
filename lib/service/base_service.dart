@@ -7,7 +7,7 @@ class BaseService {
     switch (obj.runtimeType) {
       case DioException:
         final res = (obj as DioException).response;
-        var message = res!.data['message'];
+        var message = res?.data['message'];
         var newResponse = BaseResponse<T>(
           statusCode: res?.statusCode ?? 404,
           message: message ?? res?.statusMessage ?? '',

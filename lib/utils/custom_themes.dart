@@ -25,7 +25,7 @@ extension AppThemeExtension on AppTheme {
       case AppTheme.dark:
         return 'Dark';
       default:
-        return 'light';
+        return '';
     }
   }
 

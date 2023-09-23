@@ -6,6 +6,8 @@ import 'package:bloc_example/view/products/repo/product_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../utils/base_state.dart';
+
 part 'product_event.dart';
 
 part 'product_state.dart';
