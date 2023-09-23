@@ -1,9 +1,12 @@
-import 'package:bloc_example/injection_service.dart';
+import 'package:bloc_example/models/base_response.dart';
+import 'package:bloc_example/service/injection_service.dart';
 import 'package:bloc_example/models/product.dart';
 import 'package:bloc_example/utils/status.dart';
 import 'package:bloc_example/view/products/repo/product_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../utils/base_state.dart';
 
 part 'product_event.dart';
 
@@ -21,18 +24,17 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   void _mapGetProductsEventToState(
       GetProducts event, Emitter<ProductState> emit) async {
     emit(state.copyWith(status: Status.loading));
-    try {
-      final products = await _repo.getProducts();
-      emit(
-        state.copyWith(
-          status: Status.success,
-          products: products,
-        ),
-      );
-    } catch (error, stacktrace) {
-      print(stacktrace);
-      emit(state.copyWith(status: Status.error));
-    }
+
+    final result = await _repo.getProducts();
+    emit(
+      state.copyWith(
+        status: result.type == APIResultType.success
+            ? Status.success
+            : Status.error,
+        message: result.message,
+        products: result.data,
+      ),
+    );
   }
 
   void _mapSelectProductEventToState(
@@ -50,9 +52,11 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(state.copyWith(updateStatus: Status.loading));
 
     await Future.delayed(const Duration(seconds: 3));
-    final product =
-        state.products.firstWhere((element) => element.id == event.id);
-    product.title = event.name;
+
+    final index =
+        state.products.indexWhere((element) => element.id == event.id);
+    final product = state.products[index];
+    state.products[index] = product.copyWith(title: event.name);
     emit(
       state.copyWith(
           updateStatus: Status.success,

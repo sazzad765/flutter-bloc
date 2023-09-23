@@ -1,4 +1,4 @@
-import 'package:bloc_example/injection_service.dart' as di;
+import 'package:bloc_example/service/injection_service.dart' as di;
 import 'package:bloc_example/utils/custom_themes.dart';
 import 'package:bloc_example/view/products/bloc/product_bloc.dart';
 import 'package:bloc_example/view/products/product_screen.dart';
@@ -27,12 +27,10 @@ class MyApp extends StatelessWidget {
             create: (context) => ProductBloc()..add(GetProducts()),
           ),
         ],
-        child: BlocBuilder<ThemeCubit, ThemeState>(
+        child: BlocBuilder<ThemeCubit, AppTheme>(
           builder: (context, state) => MaterialApp(
             title: 'Product',
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: state.themeMode,
+            theme: AppThemes.appThemeData[state],
             home: const ProductScreen(),
           ),
         ));

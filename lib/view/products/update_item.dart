@@ -23,38 +23,41 @@ class _UpdateItemState extends State<UpdateItem> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProductBloc, ProductState>(listener: (context, state) {
-      if (state.updateStatus == Status.success) {
-        Navigator.pop(context);
-      }
-    }, builder: (context, state) {
-      return AlertDialog(
-        title: const Text('TextField in Dialog'),
-        content: TextField(
-          onChanged: (value) {},
-          controller: _textFieldController,
-          decoration: const InputDecoration(hintText: "Text Field in Dialog"),
-        ),
-        actions: <Widget>[
-          state.updateStatus == Status.loading
-              ? const Center(child: CircularProgressIndicator())
-              : MaterialButton(
-                  color: Colors.green,
-                  textColor: Colors.white,
-                  child: const Text('OK'),
-                  onPressed: () {
-                    context.read<ProductBloc>().add(
-                          UpdateProduct(
-                            id: widget.product.id ?? 0,
-                            name: _textFieldController.text,
-                          ),
-                        );
+    return BlocConsumer<ProductBloc, ProductState>(
+      listener: (context, state) {
+        if (state.updateStatus == Status.success) {
+          Navigator.pop(context);
+        }
+      },
+      builder: (context, state) {
+        return AlertDialog(
+          title: const Text('TextField in Dialog'),
+          content: TextField(
+            onChanged: (value) {},
+            controller: _textFieldController,
+            decoration: const InputDecoration(hintText: "Text Field in Dialog"),
+          ),
+          actions: <Widget>[
+            state.updateStatus == Status.loading
+                ? const Center(child: CircularProgressIndicator())
+                : MaterialButton(
+                    color: Colors.green,
+                    textColor: Colors.white,
+                    child: const Text('OK'),
+                    onPressed: () {
+                      context.read<ProductBloc>().add(
+                            UpdateProduct(
+                              id: widget.product.id ?? 0,
+                              name: _textFieldController.text,
+                            ),
+                          );
 
-                    // Navigator.pop(context);
-                  },
-                ),
-        ],
-      );
-    });
+                      // Navigator.pop(context);
+                    },
+                  ),
+          ],
+        );
+      },
+    );
   }
 }

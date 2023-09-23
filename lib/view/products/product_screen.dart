@@ -1,3 +1,5 @@
+import 'package:bloc_example/view/common/base_layout.dart';
+import 'package:bloc_example/view/common/custom_app_bar.dart';
 import 'package:bloc_example/view/products/bloc/product_bloc.dart';
 import 'package:bloc_example/models/product.dart';
 import 'package:bloc_example/view/products/product_item.dart';
@@ -27,42 +29,39 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Products'), actions: const [
-          ThemeButton(),
-        ]),
+        appBar: const CustomAppBar(
+          title: 'Products',
+          actions: [
+            ThemeButton(),
+          ],
+        ),
         body: BlocBuilder<ProductBloc, ProductState>(
           buildWhen: (previous, current) =>
-              current.status.isSuccess || current.status.isUpdate,
+              current.status.isSuccess ||
+              current.status.isUpdate ||
+              current.status.isError,
           builder: (context, state) {
-            if (state.status == Status.loading) {
-              return const Center(
-                child: CircularProgressIndicator(color: Colors.red),
-              );
-            }
-            if (state.status == Status.initial) {
-              return const Center(
-                child: CircularProgressIndicator(color: Colors.red),
-              );
-            }
-            return ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              itemBuilder: (context, index) {
-                return ProductItem(
-                  product: state.products[index],
-                  callback: (Product productSelected) {
-                    context.read<ProductBloc>().add(
-                          SelectProduct(
-                            idSelected: productSelected.id ?? 0,
-                          ),
-                        );
+            return BaseLayout(
+                state: state,
+                child: ListView.builder(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  itemBuilder: (context, index) {
+                    return ProductItem(
+                      product: state.products[index],
+                      callback: (Product productSelected) {
+                        context.read<ProductBloc>().add(
+                              SelectProduct(
+                                idSelected: productSelected.id ?? 0,
+                              ),
+                            );
+                      },
+                      longPress: (productSelected) {
+                        showUpdateItem(productSelected);
+                      },
+                    );
                   },
-                  longPress: (productSelected) {
-                    showUpdateItem(productSelected);
-                  },
-                );
-              },
-              itemCount: state.products.length,
-            );
+                  itemCount: state.products.length,
+                ));
           },
         ));
   }

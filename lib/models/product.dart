@@ -1,64 +1,41 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
-class Product extends Equatable {
-  int? id;
-  String? title;
-  String? description;
-  int? price;
-  double? discountPercentage;
-  double? rating;
-  int? stock;
-  String? brand;
-  String? category;
-  String? thumbnail;
-  List<String>? images;
+part 'product.freezed.dart';
 
-  Product({
-    this.id,
-    this.title,
-    this.description,
-    this.price,
-    this.discountPercentage,
-    this.rating,
-    this.stock,
-    this.brand,
-    this.category,
-    this.thumbnail,
-    this.images,
-  });
+part 'product.g.dart';
 
-  factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json["id"],
-        title: json["title"],
-        description: json["description"],
-        price: json["price"],
-        discountPercentage: json["discountPercentage"]?.toDouble(),
-        rating: json["rating"]?.toDouble(),
-        stock: json["stock"],
-        brand: json["brand"],
-        category: json["category"],
-        thumbnail: json["thumbnail"],
-        images: json["images"] == null
-            ? []
-            : List<String>.from(json["images"]!.map((x) => x)),
-      );
+@freezed
+class Product with _$Product {
+  const factory Product({
+    @JsonKey(name: "id") int? id,
+    @JsonKey(name: "title") String? title,
+    @JsonKey(name: "description") String? description,
+    @JsonKey(name: "price") int? price,
+    @JsonKey(name: "discountPercentage") double? discountPercentage,
+    @JsonKey(name: "rating") double? rating,
+    @JsonKey(name: "stock") int? stock,
+    @JsonKey(name: "brand") String? brand,
+    @JsonKey(name: "category") String? category,
+    @JsonKey(name: "thumbnail") String? thumbnail,
+    @JsonKey(name: "images") List<String>? images,
+  }) = _Product;
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "title": title,
-        "description": description,
-        "price": price,
-        "discountPercentage": discountPercentage,
-        "rating": rating,
-        "stock": stock,
-        "brand": brand,
-        "category": category,
-        "thumbnail": thumbnail,
-        "images":
-            images == null ? [] : List<dynamic>.from(images!.map((x) => x)),
-      };
+  // const factory Product.variant({
+  //   @JsonKey(name: "id") int? id,
+  //   @JsonKey(name: "title") String? title,
+  //   @JsonKey(name: "description") String? description,
+  //   @JsonKey(name: "price") int? price,
+  //   @JsonKey(name: "discountPercentage") double? discountPercentage,
+  //   @JsonKey(name: "rating") double? rating,
+  //   @JsonKey(name: "stock") int? stock,
+  //   @JsonKey(name: "brand") String? brand,
+  //   @JsonKey(name: "category") String? category,
+  //   @JsonKey(name: "thumbnail") String? thumbnail,
+  //   @JsonKey(name: "images") List<String>? images,
+  //   @JsonKey(name: "color") String? color,
+  // }) = _Variant;
 
-  @override
-  // TODO: implement props
-  List<Object?> get props => [id, title];
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
 }
