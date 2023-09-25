@@ -17,6 +17,11 @@ class ProductState extends Equatable implements BaseState {
   final int idSelected;
   final Status updateStatus;
 
+  // Product getById(int id) => products.firstWhere(
+  //       (element) => element.id == id,
+  //   orElse: () => const Product(),
+  // );
+
   ProductState copyWith({
     List<Product>? products,
     Status? status,

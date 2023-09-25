@@ -51,18 +51,18 @@ class _ProductScreenState extends State<ProductScreen> {
                     final item = state.products[index];
                     return ProductItem(
                       product: item,
-                      onDoubleTap: () {
-                        context.read<ProductBloc>().add(
-                              SelectProduct(
-                                idSelected: item.id ?? 0,
-                              ),
-                            );
-                      },
-                      callback: () {
+                      // onDoubleTap: () {
+                      //   context.read<ProductBloc>().add(
+                      //         SelectProduct(
+                      //           idSelected: item.id ?? 0,
+                      //         ),
+                      //       );
+                      // },
+                      onTap: () {
                         Navigator.pushNamed(context, RouteName.productDetails,
                             arguments: item.id);
                       },
-                      longPress: () {
+                      onLongPress: () {
                         showUpdateItem(item);
                       },
                     );
