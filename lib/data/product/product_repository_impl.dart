@@ -3,14 +3,18 @@ import 'package:bloc_example/demo_data/data.dart';
 import 'package:bloc_example/models/base_response.dart';
 import 'package:bloc_example/models/product.dart';
 import 'package:bloc_example/service/base_service.dart';
+import 'package:bloc_example/service/shared_pref.dart';
 import 'package:bloc_example/view/products/repo/product_repository.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   ProductRepositoryImpl({
     required RestClient client,
-  }) : _client = client;
+    required SharePref sharePref,
+  })  : _client = client,
+        _sharePref = sharePref;
 
   final RestClient _client;
+  final SharePref _sharePref;
 
   @override
   Future<BaseResponse<List<Product>>> getProducts() async {
