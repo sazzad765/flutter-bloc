@@ -1,5 +1,7 @@
+import 'package:bloc_example/utils/extension/widget_extension.dart';
 import 'package:bloc_example/utils/theme/custom_themes.dart';
 import 'package:bloc_example/view/common/custom_btn.dart';
+import 'package:bloc_example/view/common/custom_button.dart';
 import 'package:bloc_example/view/common/custom_dialog.dart';
 import 'package:bloc_example/view/common/custom_text_form_filed.dart';
 import 'package:bloc_example/view/common/custom_toast.dart';
@@ -40,25 +42,22 @@ class _UpdateItemState extends State<UpdateItem> {
               labelText: 'Name',
             ),
             CustomSpacing.verticalSpace(),
-            SizedBox(
-              height: 40,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Expanded(
-                    child: CustomButton(
-                      text: 'Cancel',
-                      color: Colors.red,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: CustomButton(
+                    text: 'Cancel',
+                    color: Colors.red,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
-                  CustomSpacing.horizontalSpace(),
-                  Expanded(child: updateButton()),
-                ],
-              ),
-            )
+                ),
+                CustomSpacing.horizontalSpace(),
+                Expanded(child: updateButton()),
+              ],
+            ).height(40)
           ],
         ),
       ),
@@ -80,11 +79,11 @@ class _UpdateItemState extends State<UpdateItem> {
           showProgressIndicator: state.updateStatus == Status.loading,
           onPressed: () {
             context.read<ProductBloc>().add(
-                  UpdateProduct(
-                    id: widget.product.id ?? 0,
-                    name: _textFieldController.text,
-                  ),
-                );
+              UpdateProduct(
+                id: widget.product.id ?? 0,
+                name: _textFieldController.text,
+              ),
+            );
           },
         );
       },

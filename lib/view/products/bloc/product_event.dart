@@ -30,3 +30,14 @@ class UpdateProduct extends ProductEvent {
 // @override
 // List<Object?> get props => [idSelected];
 }
+
+class SearchProduct extends ProductEvent {
+  SearchProduct({
+    required this.query,
+  });
+
+  final String query;
+
+// @override
+// List<Object?> get props => [idSelected];
+}

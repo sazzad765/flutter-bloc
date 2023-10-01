@@ -1,3 +1,4 @@
+import 'package:bloc_example/utils/theme/custom_themes.dart';
 import 'package:bloc_example/utils/theme/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -32,7 +33,7 @@ class _CustomDialogState extends State<CustomDialog> {
                 Expanded(
                     child: Text(widget.title,
                         textAlign: TextAlign.center,
-                        style: BaseTextTheme.boldFont)),
+                        style: const TextStyle().boldFont)),
                 SizedBox(
                     width: 40,
                     child: IconButton(

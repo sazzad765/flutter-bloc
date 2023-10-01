@@ -1,11 +1,12 @@
+import 'package:bloc_example/utils/theme/custom_themes.dart';
 import 'package:bloc_example/utils/theme/text_theme.dart';
 import 'package:bloc_example/view/common/custom_dialog.dart';
 import 'package:bloc_example/view/common/custom_text_form_filed.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
-class CustomSearchableDropdown<T> extends StatefulWidget {
-  const CustomSearchableDropdown({
+class SearchableDropdown<T> extends StatefulWidget {
+  const SearchableDropdown({
     super.key,
     this.value,
     this.hint,
@@ -23,18 +24,17 @@ class CustomSearchableDropdown<T> extends StatefulWidget {
   final void Function(dynamic)? onChanged;
 
   @override
-  State<CustomSearchableDropdown> createState() =>
-      _CustomSearchableDropdownState();
+  State<SearchableDropdown> createState() => _SearchableDropdownState();
 }
 
-class _CustomSearchableDropdownState extends State<CustomSearchableDropdown> {
+class _SearchableDropdownState extends State<SearchableDropdown> {
   @override
   initState() {
     super.initState();
   }
 
   @override
-  void didUpdateWidget(CustomSearchableDropdown oldWidget) {
+  void didUpdateWidget(SearchableDropdown oldWidget) {
     super.didUpdateWidget(oldWidget);
   }
 
@@ -53,7 +53,7 @@ class _CustomSearchableDropdownState extends State<CustomSearchableDropdown> {
             content: StatefulBuilder(builder: (context, setState) {
               final list = widget.items
                   .where((element) =>
-                      element.name.toLowerCase().contains(search.toLowerCase()))
+                  element.name.toLowerCase().contains(search.toLowerCase()))
                   .toList();
               return SizedBox(
                 height: MediaQuery.sizeOf(context).height * .6,
@@ -85,7 +85,7 @@ class _CustomSearchableDropdownState extends State<CustomSearchableDropdown> {
                             child: Padding(
                               padding: const EdgeInsets.all(16),
                               child: Text(item.name,
-                                  style: BaseTextTheme.mediumFont),
+                                  style: const TextStyle().mediumFont),
                             ),
                           );
                         },
@@ -101,6 +101,7 @@ class _CustomSearchableDropdownState extends State<CustomSearchableDropdown> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.theme;
     final defaultValue = widget.items
         .firstWhereOrNull((element) => element.value == widget.value)
         ?.name;
@@ -116,7 +117,8 @@ class _CustomSearchableDropdownState extends State<CustomSearchableDropdown> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(defaultValue ?? widget.hint ?? '',
-                    style: BaseTextTheme.mediumFont
+                    style: const TextStyle()
+                        .mediumFont
                         .copyWith(color: widget.disable ? Colors.grey : null)),
                 Icon(
                   Icons.keyboard_arrow_down_outlined,
@@ -134,12 +136,12 @@ class DropDownItem {
   const DropDownItem({required this.name, required this.value});
 
   factory DropDownItem.fromJson(Map<String, dynamic> json) => DropDownItem(
-        name: json["name"],
-        value: json["value"],
-      );
+    name: json["name"],
+    value: json["value"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "name": name,
-        "value": value,
-      };
+    "name": name,
+    "value": value,
+  };
 }

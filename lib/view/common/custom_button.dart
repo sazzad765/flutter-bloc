@@ -1,3 +1,4 @@
+import 'package:bloc_example/utils/theme/custom_themes.dart';
 import 'package:flutter/material.dart';
 
 typedef Callback = void Function();
@@ -33,8 +34,7 @@ class CustomButton extends StatelessWidget {
   })  : type = type ?? CustomButtonType.standard,
         super(key: key);
 
-  Widget _buildCustomButtonType(
-      Widget contents, CustomButtonType customButtonType, ThemeData theme) {
+  Widget _buildCustomButtonType(Widget contents, CustomButtonType customButtonType, ThemeData theme) {
     switch (customButtonType) {
       case CustomButtonType.outlined:
         return OutlinedButton(
@@ -47,15 +47,7 @@ class CustomButton extends StatelessWidget {
                 width: 1.5,
                 color: color == null ? theme.colorScheme.error : color!),
           ),
-          child: (gradient != null)
-              ? Ink(
-                  decoration: BoxDecoration(
-                    gradient: gradient,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: contents,
-                )
-              : contents,
+          child: contents,
         );
       case CustomButtonType.standard:
       default:
@@ -67,22 +59,14 @@ class CustomButton extends StatelessWidget {
             backgroundColor: color,
           ),
           onPressed: onPressed,
-          child: (gradient != null)
-              ? Ink(
-                  decoration: BoxDecoration(
-                    gradient: gradient,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: contents,
-                )
-              : contents,
+          child: contents,
         );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = context.theme;
 
     return _buildCustomButtonType(contents(theme), type, theme);
   }
@@ -108,35 +92,35 @@ class CustomButton extends StatelessWidget {
       height: height,
       child: showProgressIndicator
           ? const CircularProgressIndicator(
-              color: Colors.white,
-            )
+        color: Colors.white,
+      )
           : Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(width: leftPadding),
-                if (child != null) child!,
-                if (text != null)
-                  Expanded(
-                    flex: wrapText ? 1 : 0,
-                    child: Text(
-                      text ?? '',
-                      textAlign: TextAlign.center,
-                      style: type == CustomButtonType.outlined
-                          ? TextStyle(
-                              fontSize: theme.textTheme.labelLarge!.fontSize,
-                              color: color == null
-                                  ? theme.colorScheme.error
-                                  : color!)
-                          : TextStyle(
-                              fontSize: theme.textTheme.labelLarge!.fontSize,
-                              color: textColor),
-                    ),
-                  ),
-                if (icon == null) SizedBox(width: rightPadding),
-                if (icon != null) icon!,
-              ],
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(width: leftPadding),
+          if (child != null) child!,
+          if (text != null)
+            Expanded(
+              flex: wrapText ? 1 : 0,
+              child: Text(
+                text ?? '',
+                textAlign: TextAlign.center,
+                style: type == CustomButtonType.outlined
+                    ? TextStyle(
+                    fontSize: theme.textTheme.labelLarge!.fontSize,
+                    color: color == null
+                        ? theme.colorScheme.error
+                        : color!)
+                    : TextStyle(
+                    fontSize: theme.textTheme.labelLarge!.fontSize,
+                    color: textColor),
+              ),
             ),
+          if (icon == null) SizedBox(width: rightPadding),
+          if (icon != null) icon!,
+        ],
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:bloc_example/models/filter_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
