@@ -6,6 +6,7 @@ class CustomCard extends StatelessWidget {
       this.borderRadius = 15.0,
       required this.child,
       this.onTap,
+      this.onLongPress,
       this.padding,
       this.backgroundColor,
       this.margin,
@@ -16,6 +17,7 @@ class CustomCard extends StatelessWidget {
   final Widget child;
   final double borderRadius;
   final void Function()? onTap;
+  final void Function()? onLongPress;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final Color? backgroundColor;
@@ -37,6 +39,7 @@ class CustomCard extends StatelessWidget {
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: onTap,
+        onLongPress: onLongPress,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(borderRadius),
           child: Padding(
