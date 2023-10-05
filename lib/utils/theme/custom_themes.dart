@@ -74,6 +74,8 @@ class CustomColors {
   static const divider = Colors.black12;
   static const lightGrey = Color(0xffF3F2F2);
   static const button = Color(0xffF8B335);
+  static const shimmerBase = Color(0xFFEBEBF4);
+  static const shimmerHighlight = Color(0xFFF4F4F4);
 }
 
 class CustomSpacing {

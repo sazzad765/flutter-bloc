@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension UIThemeExtension on TextStyle {
+extension UIThemeExtension on TextTheme  {
   TextStyle get boldFont => const TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,

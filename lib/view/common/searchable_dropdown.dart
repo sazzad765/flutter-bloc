@@ -48,12 +48,13 @@ class _SearchableDropdownState extends State<SearchableDropdown> {
       context: context,
       builder: (context) {
         var search = '';
+        final theme = context.theme;
         return CustomDialog(
             title: widget.title ?? '',
             content: StatefulBuilder(builder: (context, setState) {
               final list = widget.items
                   .where((element) =>
-                  element.name.toLowerCase().contains(search.toLowerCase()))
+                      element.name.toLowerCase().contains(search.toLowerCase()))
                   .toList();
               return SizedBox(
                 height: MediaQuery.sizeOf(context).height * .6,
@@ -85,7 +86,7 @@ class _SearchableDropdownState extends State<SearchableDropdown> {
                             child: Padding(
                               padding: const EdgeInsets.all(16),
                               child: Text(item.name,
-                                  style: const TextStyle().mediumFont),
+                                  style: theme.textTheme.mediumFont),
                             ),
                           );
                         },
@@ -117,8 +118,7 @@ class _SearchableDropdownState extends State<SearchableDropdown> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(defaultValue ?? widget.hint ?? '',
-                    style: const TextStyle()
-                        .mediumFont
+                    style: theme.textTheme.mediumFont
                         .copyWith(color: widget.disable ? Colors.grey : null)),
                 Icon(
                   Icons.keyboard_arrow_down_outlined,
@@ -136,12 +136,12 @@ class DropDownItem {
   const DropDownItem({required this.name, required this.value});
 
   factory DropDownItem.fromJson(Map<String, dynamic> json) => DropDownItem(
-    name: json["name"],
-    value: json["value"],
-  );
+        name: json["name"],
+        value: json["value"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "name": name,
-    "value": value,
-  };
+        "name": name,
+        "value": value,
+      };
 }

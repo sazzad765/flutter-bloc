@@ -21,6 +21,7 @@ class CustomDialog extends StatefulWidget {
 class _CustomDialogState extends State<CustomDialog> {
   @override
   Widget build(BuildContext context) {
+    final theme = context.theme;
     return Dialog(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
@@ -33,7 +34,7 @@ class _CustomDialogState extends State<CustomDialog> {
                 Expanded(
                     child: Text(widget.title,
                         textAlign: TextAlign.center,
-                        style: const TextStyle().boldFont)),
+                        style: theme.textTheme.boldFont)),
                 SizedBox(
                     width: 40,
                     child: IconButton(
