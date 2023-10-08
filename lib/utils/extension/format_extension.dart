@@ -1,5 +1,5 @@
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 const String DD_MM_YYYY = 'dd/MM/yyyy';
 
@@ -14,4 +14,8 @@ extension DateTimeExtension on DateTime {
     }
     return DateFormat(pattern, locale).format(this);
   }
+}
+
+extension NumExtensions on num {
+  bool get isInt => (this % 1) == 0;
 }

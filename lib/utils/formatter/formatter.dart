@@ -1,8 +1,5 @@
+import 'package:bloc_example/utils/extension/format_extension.dart';
 import 'package:intl/intl.dart';
-
-extension NumExtensions on num {
-  bool get isInt => (this % 1) == 0;
-}
 
 class Formatter {
   static String formatNegativeDecimal(double number) {
@@ -32,8 +29,7 @@ class Formatter {
     }
   }
 
-  static String formatNumber(
-    num number, {
+  static String formatNumber(num number, {
     int minDigits = 0,
     int maxDigits = 2,
   }) {

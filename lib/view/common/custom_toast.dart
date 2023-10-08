@@ -41,8 +41,6 @@ class CustomToast {
                   ),
                   Text(
                     msg,
-                    overflow: TextOverflow.fade,
-                    maxLines: 2,
                     style: const TextStyle(color: Colors.white),
                   ),
                 ],
@@ -86,8 +84,6 @@ class CustomToast {
                   ),
                   Text(
                     msg,
-                    overflow: TextOverflow.fade,
-                    maxLines: 2,
                     style: const TextStyle(color: Colors.white),
                   ),
                 ],

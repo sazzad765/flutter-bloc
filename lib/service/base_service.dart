@@ -17,4 +17,15 @@ class BaseService {
         return BaseResponse<T>(message: 'Error', statusCode: 404);
     }
   }
+
+// List<T> search<T extends FilterModel>({
+//   required List<T> items,
+//   required String q,
+//   SearchFilter<T>? filter,
+// }) {
+//   final i = items.where((item) => filter == null || filter(item)).toList();
+//   return i.where((element) => element.matcher(q)).toList();
+// }
 }
+
+// typedef SearchFilter<T> = bool Function(T item);

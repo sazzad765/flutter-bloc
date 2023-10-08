@@ -22,39 +22,28 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 mixin _$Product {
   @JsonKey(name: "id")
   int? get id => throw _privateConstructorUsedError;
-
   @JsonKey(name: "title")
   String? get title => throw _privateConstructorUsedError;
-
   @JsonKey(name: "description")
   String? get description => throw _privateConstructorUsedError;
-
   @JsonKey(name: "price")
   int? get price => throw _privateConstructorUsedError;
-
   @JsonKey(name: "discountPercentage")
   double? get discountPercentage => throw _privateConstructorUsedError;
-
   @JsonKey(name: "rating")
   double? get rating => throw _privateConstructorUsedError;
-
   @JsonKey(name: "stock")
   int? get stock => throw _privateConstructorUsedError;
-
   @JsonKey(name: "brand")
   String? get brand => throw _privateConstructorUsedError;
-
   @JsonKey(name: "category")
   String? get category => throw _privateConstructorUsedError;
-
   @JsonKey(name: "thumbnail")
   String? get thumbnail => throw _privateConstructorUsedError;
-
   @JsonKey(name: "images")
   List<String>? get images => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
 }
@@ -63,7 +52,6 @@ mixin _$Product {
 abstract class $ProductCopyWith<$Res> {
   factory $ProductCopyWith(Product value, $Res Function(Product) then) =
       _$ProductCopyWithImpl<$Res, Product>;
-
   @useResult
   $Res call(
       {@JsonKey(name: "id") int? id,
@@ -86,7 +74,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -159,7 +146,6 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$$_ProductCopyWith(
           _$_Product value, $Res Function(_$_Product) then) =
       __$$_ProductCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -298,7 +284,6 @@ class _$_Product with DiagnosticableTreeMixin implements _Product {
   @JsonKey(name: "thumbnail")
   final String? thumbnail;
   final List<String>? _images;
-
   @override
   @JsonKey(name: "images")
   List<String>? get images {
@@ -403,47 +388,36 @@ abstract class _Product implements Product {
   @override
   @JsonKey(name: "id")
   int? get id;
-
   @override
   @JsonKey(name: "title")
   String? get title;
-
   @override
   @JsonKey(name: "description")
   String? get description;
-
   @override
   @JsonKey(name: "price")
   int? get price;
-
   @override
   @JsonKey(name: "discountPercentage")
   double? get discountPercentage;
-
   @override
   @JsonKey(name: "rating")
   double? get rating;
-
   @override
   @JsonKey(name: "stock")
   int? get stock;
-
   @override
   @JsonKey(name: "brand")
   String? get brand;
-
   @override
   @JsonKey(name: "category")
   String? get category;
-
   @override
   @JsonKey(name: "thumbnail")
   String? get thumbnail;
-
   @override
   @JsonKey(name: "images")
   List<String>? get images;
-
   @override
   @JsonKey(ignore: true)
   _$$_ProductCopyWith<_$_Product> get copyWith =>

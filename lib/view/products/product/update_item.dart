@@ -1,5 +1,7 @@
+import 'package:bloc_example/utils/extension/widget_extension.dart';
+import 'package:bloc_example/utils/validator/form_validator.dart';
 import 'package:bloc_example/utils/theme/custom_themes.dart';
-import 'package:bloc_example/view/common/custom_btn.dart';
+import 'package:bloc_example/view/common/custom_button.dart';
 import 'package:bloc_example/view/common/custom_dialog.dart';
 import 'package:bloc_example/view/common/custom_text_form_filed.dart';
 import 'package:bloc_example/view/common/custom_toast.dart';
@@ -19,6 +21,7 @@ class UpdateItem extends StatefulWidget {
 
 class _UpdateItemState extends State<UpdateItem> {
   final TextEditingController _textFieldController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -31,18 +34,19 @@ class _UpdateItemState extends State<UpdateItem> {
     return CustomDialog(
       title: 'Update Name',
       content: SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomTextFormField(
-              onChanged: (value) {},
-              controller: _textFieldController,
-              type: CustomTextFormFieldType.outlined,
-              labelText: 'Name',
-            ),
-            CustomSpacing.verticalSpace(),
-            SizedBox(
-              height: 40,
-              child: Row(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              CustomTextFormField(
+                onChanged: (value) {},
+                controller: _textFieldController,
+                validator: Validator.name,
+                type: CustomTextFormFieldType.outlined,
+                labelText: 'Name',
+              ),
+              CustomSpacing.verticalSpace(),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Expanded(
@@ -57,9 +61,9 @@ class _UpdateItemState extends State<UpdateItem> {
                   CustomSpacing.horizontalSpace(),
                   Expanded(child: updateButton()),
                 ],
-              ),
-            )
-          ],
+              ).height(40)
+            ],
+          ),
         ),
       ),
     );
@@ -79,12 +83,14 @@ class _UpdateItemState extends State<UpdateItem> {
           color: Colors.green,
           showProgressIndicator: state.updateStatus == Status.loading,
           onPressed: () {
-            context.read<ProductBloc>().add(
-                  UpdateProduct(
-                    id: widget.product.id ?? 0,
-                    name: _textFieldController.text,
-                  ),
-                );
+            if (_formKey.currentState!.validate()) {
+              context.read<ProductBloc>().add(
+                    UpdateProduct(
+                      id: widget.product.id ?? 0,
+                      name: _textFieldController.text,
+                    ),
+                  );
+            }
           },
         );
       },
