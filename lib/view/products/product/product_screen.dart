@@ -47,26 +47,24 @@ class _ProductScreenState extends State<ProductScreen> {
                   horizontal: 16.0, vertical: 16),
               itemBuilder: (context, index) {
                 final item = state.products[index];
-                return const Shimmer(
-                  child: ProductItem(product: Product()),
+                return
+                  ProductItem(
+                  product: item,
+                  // onDoubleTap: () {
+                  //   context.read<ProductBloc>().add(
+                  //         SelectProduct(
+                  //           idSelected: item.id ?? 0,
+                  //         ),
+                  //       );
+                  // },
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteName.productDetails,
+                        arguments: item.id);
+                  },
+                  onLongPress: () {
+                    showUpdateItem(item);
+                  },
                 );
-                //   ProductItem(
-                //   product: item,
-                //   // onDoubleTap: () {
-                //   //   context.read<ProductBloc>().add(
-                //   //         SelectProduct(
-                //   //           idSelected: item.id ?? 0,
-                //   //         ),
-                //   //       );
-                //   // },
-                //   onTap: () {
-                //     Navigator.pushNamed(context, RouteName.productDetails,
-                //         arguments: item.id);
-                //   },
-                //   onLongPress: () {
-                //     showUpdateItem(item);
-                //   },
-                // );
               },
               itemCount: state.products.length,
             ));
