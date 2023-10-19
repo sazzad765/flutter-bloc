@@ -27,9 +27,7 @@ class ProductItem extends StatelessWidget {
     final theme = context.theme;
     return BlocSelector<ProductBloc, ProductState, bool>(
       selector: (state) =>
-          (state.status.isSelected && state.idSelected == product.id)
-              ? true
-              : false,
+          (state.status.isSelected && state.idSelected == product.id),
       builder: (context, state) {
         return CustomCard(
           onTap: onTap,
