@@ -1,6 +1,6 @@
+import 'package:bloc_example/domain/products/use_case/get_product_use_case.dart';
+import 'package:bloc_example/domain/products/use_case/get_products_use_case.dart';
 import 'package:bloc_example/service/injection_service.dart';
-import 'package:bloc_example/view/products/domain/usecases/get_product_use_case.dart';
-import 'package:bloc_example/view/products/domain/usecases/get_products_use_case.dart';
 
 Future<void> setUpUseCaseModule() async {
   di.registerLazySingleton<GetProductsUseCase>(

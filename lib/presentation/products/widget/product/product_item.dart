@@ -1,10 +1,9 @@
-import 'package:bloc_example/utils/extension/format_extension.dart';
 import 'package:bloc_example/utils/extension/widget_extension.dart';
 import 'package:bloc_example/utils/theme/custom_themes.dart';
 import 'package:bloc_example/utils/theme/text_theme.dart';
-import 'package:bloc_example/view/common/custom_card.dart';
-import 'package:bloc_example/view/common/custom_image.dart';
-import 'package:bloc_example/view/products/bloc/product_bloc.dart';
+import 'package:bloc_example/presentation/common/custom_card.dart';
+import 'package:bloc_example/presentation/common/custom_image.dart';
+import 'package:bloc_example/presentation/products/bloc/product_bloc.dart';
 import 'package:bloc_example/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

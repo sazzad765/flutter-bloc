@@ -1,15 +1,13 @@
-import 'package:bloc_example/utils/route/route.dart';
-import 'package:bloc_example/view/common/base_layout.dart';
-import 'package:bloc_example/view/common/custom_app_bar.dart';
-import 'package:bloc_example/view/common/shimmer.dart';
-import 'package:bloc_example/view/products/bloc/product_bloc.dart';
 import 'package:bloc_example/models/product.dart';
-import 'package:bloc_example/view/products/product/product_item.dart';
-import 'package:bloc_example/view/products/product/update_item.dart';
-import 'package:bloc_example/view/theme/theme_button.dart';
+import 'package:bloc_example/presentation/common/base_layout.dart';
+import 'package:bloc_example/presentation/products/bloc/product_bloc.dart';
+import 'package:bloc_example/presentation/products/widget/product/product_item.dart';
+import 'package:bloc_example/presentation/products/widget/product/update_item.dart';
+import 'package:bloc_example/presentation/theme/theme_button.dart';
+import 'package:bloc_example/utils/route/route.dart';
+import 'package:bloc_example/utils/status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc_example/utils/status.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({Key? key}) : super(key: key);

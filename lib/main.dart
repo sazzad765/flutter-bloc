@@ -1,9 +1,9 @@
+import 'package:bloc_example/presentation/products/bloc/product_bloc.dart';
+import 'package:bloc_example/presentation/products/widget/product/product_screen.dart';
+import 'package:bloc_example/presentation/theme/theme_bloc/theme_cubit.dart';
 import 'package:bloc_example/service/injection_service.dart' as di;
 import 'package:bloc_example/utils/route/route.dart';
 import 'package:bloc_example/utils/theme/custom_themes.dart';
-import 'package:bloc_example/view/products/bloc/product_bloc.dart';
-import 'package:bloc_example/view/products/product/product_screen.dart';
-import 'package:bloc_example/view/theme/theme_bloc/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
