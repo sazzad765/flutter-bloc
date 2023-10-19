@@ -57,7 +57,7 @@ class _UpdateItemState extends State<UpdateItem> {
                 CustomSpacing.horizontalSpace(),
                 Expanded(child: updateButton()),
               ],
-            ).height(40)
+            ).height(50),
           ],
         ),
       ),
@@ -76,16 +76,16 @@ class _UpdateItemState extends State<UpdateItem> {
         return CustomButton(
           text: 'Update',
           color: Colors.green,
-          showProgressIndicator: state.updateStatus == Status.loading,
+          // showProgressIndicator: state.updateStatus == Status.loading,
           onPressed: () {
             context.read<ProductBloc>().add(
-              UpdateProduct(
-                id: widget.product.id ?? 0,
-                name: _textFieldController.text,
-              ),
-            );
+                  UpdateProduct(
+                    id: widget.product.id ?? 0,
+                    name: _textFieldController.text,
+                  ),
+                );
           },
-        );
+        ).loading(state.updateStatus == Status.loading);
       },
     );
   }

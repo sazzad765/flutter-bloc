@@ -2,7 +2,7 @@ import 'package:bloc_example/models/base_response.dart';
 import 'package:bloc_example/service/injection_service.dart';
 import 'package:bloc_example/models/product.dart';
 import 'package:bloc_example/utils/status.dart';
-import 'package:bloc_example/view/products/repo/product_repository.dart';
+import 'package:bloc_example/view/products/domain/usecases/get_products_use_case.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,13 +19,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<UpdateProduct>(_mapUpdateProductEventToState);
   }
 
-  final _repo = di.get<ProductRepository>();
+  final _getProductsUseCase = di.get<GetProductsUseCase>();
 
   void _mapGetProductsEventToState(
       GetProducts event, Emitter<ProductState> emit) async {
     emit(state.copyWith(status: Status.loading));
 
-    final result = await _repo.getProducts();
+    final result = await _getProductsUseCase();
+
+    print(result.toJson());
     emit(
       state.copyWith(
         status: result.type == APIResultType.success

@@ -32,7 +32,7 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductBloc, ProductState>(
       buildWhen: (previous, current) =>
-      current.status.isSuccess ||
+          current.status.isSuccess ||
           current.status.isUpdate ||
           current.status.isError,
       builder: (context, state) {
@@ -43,30 +43,30 @@ class _ProductScreenState extends State<ProductScreen> {
             ],
             state: state,
             child: ListView.builder(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 16.0, vertical: 16),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
               itemBuilder: (context, index) {
                 final item = state.products[index];
-                return const Shimmer(
-                  child: ProductItem(product: Product()),
-                );
-                //   ProductItem(
-                //   product: item,
-                //   // onDoubleTap: () {
-                //   //   context.read<ProductBloc>().add(
-                //   //         SelectProduct(
-                //   //           idSelected: item.id ?? 0,
-                //   //         ),
-                //   //       );
-                //   // },
-                //   onTap: () {
-                //     Navigator.pushNamed(context, RouteName.productDetails,
-                //         arguments: item.id);
-                //   },
-                //   onLongPress: () {
-                //     showUpdateItem(item);
-                //   },
+                // return const Shimmer(
+                //   child: ProductItem(product: Product()),
                 // );
+                return ProductItem(
+                  product: item,
+                  // onDoubleTap: () {
+                  //   context.read<ProductBloc>().add(
+                  //         SelectProduct(
+                  //           idSelected: item.id ?? 0,
+                  //         ),
+                  //       );
+                  // },
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteName.productDetails,
+                        arguments: item.id);
+                  },
+                  onLongPress: () {
+                    showUpdateItem(item);
+                  },
+                );
               },
               itemCount: state.products.length,
             ));
