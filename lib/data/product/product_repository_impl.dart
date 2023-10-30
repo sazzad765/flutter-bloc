@@ -1,10 +1,9 @@
 import 'package:bloc_example/api/api_client.dart';
 import 'package:bloc_example/demo_data/data.dart';
-import 'package:bloc_example/domain/products/repo/product_repository.dart';
 import 'package:bloc_example/models/base_response.dart';
-import 'package:bloc_example/models/product.dart';
-import 'package:bloc_example/service/base_service.dart';
-import 'package:bloc_example/service/shared_pref.dart';
+import 'package:bloc_example/models/product/product.dart';
+import 'package:bloc_example/presentation/products/repository/product_repository.dart';
+import 'package:bloc_example/common/service/shared_pref.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   ProductRepositoryImpl({

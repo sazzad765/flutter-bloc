@@ -1,8 +1,7 @@
 import 'dart:core';
 
+import 'package:bloc_example/utils/status.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-enum APIResultType { success, connectionProblem, timeout, unauthorized, error }
 
 @JsonSerializable(genericArgumentFactories: true)
 class BaseResponse<T> {
@@ -17,11 +16,11 @@ class BaseResponse<T> {
   String message;
   int statusCode;
 
-  APIResultType get type {
+  Status get type {
     if (statusCode == 200) {
-      return APIResultType.success;
+      return Status.success;
     } else {
-      return APIResultType.error;
+      return Status.error;
     }
   }
 

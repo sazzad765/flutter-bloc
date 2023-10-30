@@ -1,5 +1,5 @@
 import 'package:bloc_example/models/base_response.dart';
-import 'package:bloc_example/models/product.dart';
+import 'package:bloc_example/models/product/product.dart';
 
 abstract class ProductRepository {
   Future<BaseResponse<List<Product>>> getProducts();

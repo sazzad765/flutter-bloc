@@ -1,5 +1,5 @@
-import 'package:bloc_example/models/product.dart';
-import 'package:bloc_example/presentation/common/base_layout.dart';
+import 'package:bloc_example/common/widget/base_layout.dart';
+import 'package:bloc_example/models/product/product.dart';
 import 'package:bloc_example/presentation/products/bloc/product_bloc.dart';
 import 'package:bloc_example/presentation/products/widget/product/product_item.dart';
 import 'package:bloc_example/presentation/products/widget/product/update_item.dart';

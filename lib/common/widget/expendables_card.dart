@@ -1,5 +1,5 @@
-import 'package:bloc_example/presentation/common/custom_card.dart';
-import 'package:bloc_example/presentation/common/custom_expansion_panel.dart';
+import 'package:bloc_example/common/widget/custom_card.dart';
+import 'package:bloc_example/common/widget/custom_expansion_panel.dart';
 import 'package:flutter/material.dart';
 
 class CustomExpendableCard extends StatelessWidget {

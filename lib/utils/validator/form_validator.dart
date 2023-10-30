@@ -40,7 +40,7 @@ class Validator {
   static String? custom(String? p0, {List<ValidatorType>? types}) {
     p0 ??= '';
     types ??= [ValidatorType.empty];
-    if (p0 == '' && types.hasEmpty) return "Field can't empty";
+    if (p0 == '' && types.isEmpty) return "Field can't empty";
     if (!p0.isValidEmail && types.hasEmail) return 'Email is not valid';
     if (!p0.isValidName && types.hasName) return 'Name is not valid';
     if (!p0.isValidPassword && types.hasPass) return 'Password is not valid';
@@ -51,7 +51,7 @@ class Validator {
 extension ValidatorTypeX on List<ValidatorType> {
   bool get hasEmail => contains(ValidatorType.email);
 
-  bool get hasEmpty => contains(ValidatorType.empty);
+  bool get isEmpty => contains(ValidatorType.empty);
 
   bool get hasName => contains(ValidatorType.name);
 

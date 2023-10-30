@@ -1,5 +1,5 @@
-import 'package:bloc_example/service/injection_service.dart';
-import 'package:bloc_example/service/shared_pref.dart';
+import 'package:bloc_example/common/service/shared_pref.dart';
+import 'package:bloc_example/di/injection_service.dart';
 import 'package:bloc_example/utils/theme/custom_themes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

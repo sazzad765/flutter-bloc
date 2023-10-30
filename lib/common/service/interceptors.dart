@@ -1,7 +1,5 @@
 import 'dart:convert';
-
-import 'package:bloc_example/service/injection_service.dart';
-import 'package:bloc_example/service/shared_pref.dart';
+import 'package:bloc_example/common/service/shared_pref.dart';
 import 'package:dio/dio.dart';
 import 'dart:developer' as logdev;
 

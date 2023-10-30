@@ -1,7 +1,7 @@
-import 'package:bloc_example/domain/products/use_case/get_products_use_case.dart';
+import 'package:bloc_example/di/injection_service.dart';
+import 'package:bloc_example/presentation/products/use_case/get_products_use_case.dart';
 import 'package:bloc_example/models/base_response.dart';
-import 'package:bloc_example/service/injection_service.dart';
-import 'package:bloc_example/models/product.dart';
+import 'package:bloc_example/models/product/product.dart';
 import 'package:bloc_example/utils/base_state.dart';
 import 'package:bloc_example/utils/status.dart';
 import 'package:equatable/equatable.dart';
@@ -20,7 +20,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
   final _getProductsUseCase = di.get<GetProductsUseCase>();
 
-  void _mapGetProductsEventToState(GetProducts event, Emitter<ProductState> emit) async {
+  void _mapGetProductsEventToState(
+      GetProducts event, Emitter<ProductState> emit) async {
     emit(state.copyWith(status: Status.loading));
 
     final result = await _getProductsUseCase();
@@ -28,16 +29,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     print(result.toJson());
     emit(
       state.copyWith(
-        status: result.type == APIResultType.success
-            ? Status.success
-            : Status.error,
+        status: result.type,
         message: result.message,
         products: result.data,
       ),
     );
   }
 
-  void _mapSelectProductEventToState(SelectProduct event, Emitter<ProductState> emit) async {
+  void _mapSelectProductEventToState(
+      SelectProduct event, Emitter<ProductState> emit) async {
     emit(
       state.copyWith(
         status: Status.selected,
@@ -46,13 +46,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     );
   }
 
-  void _mapUpdateProductEventToState(UpdateProduct event, Emitter<ProductState> emit) async {
+  void _mapUpdateProductEventToState(
+      UpdateProduct event, Emitter<ProductState> emit) async {
     emit(state.copyWith(updateStatus: Status.loading));
 
     await Future.delayed(const Duration(seconds: 3));
 
     final index =
-    state.products.indexWhere((element) => element.id == event.id);
+        state.products.indexWhere((element) => element.id == event.id);
     final product = state.products[index];
     state.products[index] = product.copyWith(title: event.name);
     emit(

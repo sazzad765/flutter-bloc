@@ -1,12 +1,12 @@
+import 'package:bloc_example/common/widget/custom_button.dart';
+import 'package:bloc_example/common/widget/custom_dialog.dart';
+import 'package:bloc_example/common/widget/custom_text_form_filed.dart';
+import 'package:bloc_example/common/widget/custom_toast.dart';
 import 'package:bloc_example/utils/extension/widget_extension.dart';
 import 'package:bloc_example/utils/validator/form_validator.dart';
 import 'package:bloc_example/utils/theme/custom_themes.dart';
-import 'package:bloc_example/presentation/common/custom_button.dart';
-import 'package:bloc_example/presentation/common/custom_dialog.dart';
-import 'package:bloc_example/presentation/common/custom_text_form_filed.dart';
-import 'package:bloc_example/presentation/common/custom_toast.dart';
 import 'package:bloc_example/presentation/products/bloc/product_bloc.dart';
-import 'package:bloc_example/models/product.dart';
+import 'package:bloc_example/models/product/product.dart';
 import 'package:bloc_example/utils/status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -85,11 +85,11 @@ class _UpdateItemState extends State<UpdateItem> {
           onPressed: () {
             if (_formKey.currentState!.validate()) {
               context.read<ProductBloc>().add(
-                    UpdateProduct(
-                      id: widget.product.id ?? 0,
-                      name: _textFieldController.text,
-                    ),
-                  );
+                UpdateProduct(
+                  id: widget.product.id ?? 0,
+                  name: _textFieldController.text,
+                ),
+              );
             }
           },
         );

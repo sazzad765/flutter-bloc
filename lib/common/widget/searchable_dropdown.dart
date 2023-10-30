@@ -1,7 +1,7 @@
 import 'package:bloc_example/utils/theme/custom_themes.dart';
 import 'package:bloc_example/utils/theme/text_theme.dart';
-import 'package:bloc_example/presentation/common/custom_dialog.dart';
-import 'package:bloc_example/presentation/common/custom_text_form_filed.dart';
+import 'package:bloc_example/common/widget/custom_dialog.dart';
+import 'package:bloc_example/common/widget/custom_text_form_filed.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 

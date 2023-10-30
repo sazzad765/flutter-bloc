@@ -1,10 +1,10 @@
+import 'package:bloc_example/common/widget/custom_card.dart';
+import 'package:bloc_example/common/widget/custom_image.dart';
 import 'package:bloc_example/utils/extension/widget_extension.dart';
 import 'package:bloc_example/utils/theme/custom_themes.dart';
 import 'package:bloc_example/utils/theme/text_theme.dart';
-import 'package:bloc_example/presentation/common/custom_card.dart';
-import 'package:bloc_example/presentation/common/custom_image.dart';
 import 'package:bloc_example/presentation/products/bloc/product_bloc.dart';
-import 'package:bloc_example/models/product.dart';
+import 'package:bloc_example/models/product/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc_example/utils/status.dart';
@@ -26,7 +26,7 @@ class ProductItem extends StatelessWidget {
     final theme = context.theme;
     return BlocSelector<ProductBloc, ProductState, bool>(
       selector: (state) =>
-          (state.status.isSelected && state.idSelected == product.id),
+      (state.status.isSelected && state.idSelected == product.id),
       builder: (context, state) {
         return CustomCard(
           onTap: onTap,
