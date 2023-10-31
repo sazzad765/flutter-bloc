@@ -1,6 +1,6 @@
 import 'package:bloc_example/common/service/shared_pref.dart';
 import 'package:bloc_example/di/injection_service.dart';
-import 'package:bloc_example/utils/theme/custom_themes.dart';
+import 'package:bloc_example/common/utils/theme/custom_themes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThemeCubit extends Cubit<AppTheme> {

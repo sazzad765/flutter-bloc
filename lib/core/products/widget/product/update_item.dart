@@ -2,12 +2,12 @@ import 'package:bloc_example/common/widget/custom_button.dart';
 import 'package:bloc_example/common/widget/custom_dialog.dart';
 import 'package:bloc_example/common/widget/custom_text_form_filed.dart';
 import 'package:bloc_example/common/widget/custom_toast.dart';
-import 'package:bloc_example/utils/extension/widget_extension.dart';
-import 'package:bloc_example/utils/validator/form_validator.dart';
-import 'package:bloc_example/utils/theme/custom_themes.dart';
-import 'package:bloc_example/presentation/products/bloc/product_bloc.dart';
+import 'package:bloc_example/common/utils/extension/widget_extension.dart';
+import 'package:bloc_example/common/utils/validator/form_validator.dart';
+import 'package:bloc_example/common/utils/theme/custom_themes.dart';
+import 'package:bloc_example/core/products/bloc/product_bloc.dart';
 import 'package:bloc_example/models/product/product.dart';
-import 'package:bloc_example/utils/status.dart';
+import 'package:bloc_example/common/utils/status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

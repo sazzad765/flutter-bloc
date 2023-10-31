@@ -1,3 +1,5 @@
+import 'package:bloc_example/models/base_response.dart';
+import 'package:bloc_example/models/product/product.dart';
 import 'package:dio/dio.dart';
 
 import 'package:retrofit/retrofit.dart';
@@ -10,4 +12,10 @@ abstract class RestClient {
 
   @POST("api/login")
   Future<dynamic> login(@Body() Map<String, dynamic> map);
+
+  @GET("products")
+  Future<BaseResponse<List<Product>>> getProducts();
+
+  @GET("products/{id}")
+  Future<BaseResponse<Product>> getProductById(@Path('id') String id);
 }

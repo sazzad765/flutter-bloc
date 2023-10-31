@@ -1,6 +1,6 @@
 import 'dart:core';
 
-import 'package:bloc_example/utils/status.dart';
+import 'package:bloc_example/common/utils/status.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable(genericArgumentFactories: true)

@@ -1,4 +1,4 @@
-import 'package:bloc_example/utils/theme/custom_themes.dart';
+import 'package:bloc_example/common/utils/theme/custom_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 

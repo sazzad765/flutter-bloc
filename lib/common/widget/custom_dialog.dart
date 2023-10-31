@@ -1,5 +1,5 @@
-import 'package:bloc_example/utils/theme/custom_themes.dart';
-import 'package:bloc_example/utils/theme/text_theme.dart';
+import 'package:bloc_example/common/utils/theme/custom_themes.dart';
+import 'package:bloc_example/common/utils/theme/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

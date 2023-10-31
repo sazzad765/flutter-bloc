@@ -1,11 +1,11 @@
 import 'package:bloc_example/common/widget/base_layout.dart';
 import 'package:bloc_example/models/product/product.dart';
-import 'package:bloc_example/presentation/products/bloc/product_bloc.dart';
-import 'package:bloc_example/presentation/products/widget/product/product_item.dart';
-import 'package:bloc_example/presentation/products/widget/product/update_item.dart';
-import 'package:bloc_example/presentation/theme/theme_button.dart';
-import 'package:bloc_example/utils/route/route.dart';
-import 'package:bloc_example/utils/status.dart';
+import 'package:bloc_example/core/products/bloc/product_bloc.dart';
+import 'package:bloc_example/core/products/widget/product/product_item.dart';
+import 'package:bloc_example/core/products/widget/product/update_item.dart';
+import 'package:bloc_example/core/theme/theme_button.dart';
+import 'package:bloc_example/common/utils/route/route.dart';
+import 'package:bloc_example/common/utils/status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

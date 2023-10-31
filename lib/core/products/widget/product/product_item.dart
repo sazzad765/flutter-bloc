@@ -1,13 +1,13 @@
 import 'package:bloc_example/common/widget/custom_card.dart';
 import 'package:bloc_example/common/widget/custom_image.dart';
-import 'package:bloc_example/utils/extension/widget_extension.dart';
-import 'package:bloc_example/utils/theme/custom_themes.dart';
-import 'package:bloc_example/utils/theme/text_theme.dart';
-import 'package:bloc_example/presentation/products/bloc/product_bloc.dart';
+import 'package:bloc_example/common/utils/extension/widget_extension.dart';
+import 'package:bloc_example/common/utils/theme/custom_themes.dart';
+import 'package:bloc_example/common/utils/theme/text_theme.dart';
+import 'package:bloc_example/core/products/bloc/product_bloc.dart';
 import 'package:bloc_example/models/product/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc_example/utils/status.dart';
+import 'package:bloc_example/common/utils/status.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
@@ -37,7 +37,7 @@ class ProductItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CustomImage(imageUrl: product.thumbnail ?? ''),
+              CustomImage(imageUrl: product.image ?? ''),
               CustomSpacing.verticalSpace(space: 8),
               Text(
                 product.title ?? '',

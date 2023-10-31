@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:bloc_example/common/service/shared_pref.dart';
+import 'package:bloc_example/models/base_response.dart';
 import 'package:dio/dio.dart';
 import 'dart:developer' as logdev;
 
@@ -34,13 +35,12 @@ class CustomInterceptors extends InterceptorsWrapper {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    // var newResponse = BaseResponse(
-    //     statusCode: response.statusCode ?? 404,
-    //     message: response.statusMessage ?? '',
-    //     data: response.statusCode == 200 ? response.data : null);
-    // response.data = newResponse.toJson();
-    logdev.log('${response.realUri}');
-    logdev.log(jsonEncode(response.data));
+    var newResponse = BaseResponse(
+        statusCode: response.statusCode ?? 404,
+        message: response.statusMessage ?? '',
+        data: response.statusCode == 200 ? response.data : null);
+    response.data = newResponse.toJson();
+    logdev.log('${response.realUri} ## ${jsonEncode(response.data)}');
     return handler.next(response);
   }
 }

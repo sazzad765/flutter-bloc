@@ -1,4 +1,4 @@
-import 'package:bloc_example/utils/extension/format_extension.dart';
+import 'package:bloc_example/common/utils/extension/format_extension.dart';
 import 'package:intl/intl.dart';
 
 class Formatter {

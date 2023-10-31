@@ -2,7 +2,7 @@ import 'package:bloc_example/api/api_client.dart';
 import 'package:bloc_example/demo_data/data.dart';
 import 'package:bloc_example/models/base_response.dart';
 import 'package:bloc_example/models/product/product.dart';
-import 'package:bloc_example/presentation/products/repository/product_repository.dart';
+import 'package:bloc_example/core/products/repository/product_repository.dart';
 import 'package:bloc_example/common/service/shared_pref.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
@@ -33,17 +33,19 @@ class ProductRepositoryImpl implements ProductRepository {
 
   @override
   Future<BaseResponse<List<Product>>> getProducts() async {
-    await Future.delayed(const Duration(seconds: 3));
-    return BaseResponse<List<Product>>.fromJson(productsData,
-        (p0) => List<Product>.from(p0.map((x) => Product.fromJson(x))));
+    // await Future.delayed(const Duration(seconds: 3));
+    // return BaseResponse<List<Product>>.fromJson(productsData,
+    //     (p0) => List<Product>.from(p0.map((x) => Product.fromJson(x))));
+    return await _client.getProducts();
   }
 
   @override
   Future<BaseResponse<Product>> getProduct({required int id}) async {
-    await Future.delayed(const Duration(seconds: 3));
-
-    final list = productsData["data"] as List;
-    final item = list.firstWhere((element) => element['id'] == id);
-    return BaseResponse<Product>.fromJson(item, (p0) => Product.fromJson(p0));
+    return await _client.getProductById('$id');
+    // await Future.delayed(const Duration(seconds: 3));
+    //
+    // final list = productsData["data"] as List;
+    // final item = list.firstWhere((element) => element['id'] == id);
+    // return BaseResponse<Product>.fromJson(item, (p0) => Product.fromJson(p0));
   }
 }

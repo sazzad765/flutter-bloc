@@ -1,4 +1,4 @@
-import 'package:bloc_example/utils/extension/validator_extension.dart';
+import 'package:bloc_example/common/utils/extension/validator_extension.dart';
 
 enum ValidatorType { email, name, empty, password }
 

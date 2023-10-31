@@ -1,5 +1,5 @@
-import 'package:bloc_example/presentation/products/widget/product/product_screen.dart';
-import 'package:bloc_example/presentation/products/widget/product_details/product_details_screen.dart';
+import 'package:bloc_example/core/products/widget/product/product_screen.dart';
+import 'package:bloc_example/core/products/widget/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteName {
