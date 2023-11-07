@@ -37,7 +37,7 @@ class ProductItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CustomImage(imageUrl: product.image ?? ''),
+              CustomImage(imageUrl: product.image ?? '',height: 200),
               CustomSpacing.verticalSpace(space: 8),
               Text(
                 product.title ?? '',

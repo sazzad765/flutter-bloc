@@ -1,4 +1,6 @@
-class Product {
+import 'package:bloc_example/common/interfaces/filter_model.dart';
+
+class Product extends Filter {
   int? id;
   String? title;
   double? price;
@@ -55,6 +57,11 @@ class Product {
         "image": image,
         "rating": rating?.toJson(),
       };
+
+  @override
+  String getKey() {
+    return '$title$price$category';
+  }
 }
 
 class Rating {

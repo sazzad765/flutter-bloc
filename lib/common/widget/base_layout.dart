@@ -1,5 +1,5 @@
 import 'package:bloc_example/common/widget/custom_app_bar.dart';
-import 'package:bloc_example/common/utils/base_state.dart';
+import 'package:bloc_example/common/interfaces/base_state.dart';
 import 'package:bloc_example/common/utils/status.dart';
 import 'package:flutter/material.dart';
 

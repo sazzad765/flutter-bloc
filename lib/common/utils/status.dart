@@ -29,6 +29,9 @@ enum Status {
 
   /// unauthorized api connection
   unauthorized,
+
+  ///search
+  search
 }
 
 extension StatusX on Status {

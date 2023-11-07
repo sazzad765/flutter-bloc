@@ -7,6 +7,7 @@ class ProductState extends Equatable implements BaseState {
     this.updateStatus = Status.initial,
     List<Product>? products,
     this.idSelected = 0,
+    this.search = '',
   }) : products = products ?? const [];
 
   @override
@@ -16,11 +17,8 @@ class ProductState extends Equatable implements BaseState {
   final List<Product> products;
   final int idSelected;
   final Status updateStatus;
+  final String search;
 
-  // Product getById(int id) => products.firstWhere(
-  //       (element) => element.id == id,
-  //   orElse: () => const Product(),
-  // );
 
   ProductState copyWith({
     List<Product>? products,
@@ -28,6 +26,7 @@ class ProductState extends Equatable implements BaseState {
     String? message,
     Status? updateStatus,
     int? idSelected,
+    String? search,
   }) {
     return ProductState(
       products: products ?? this.products,
@@ -35,10 +34,11 @@ class ProductState extends Equatable implements BaseState {
       message: message ?? this.message,
       updateStatus: updateStatus ?? this.updateStatus,
       idSelected: idSelected ?? this.idSelected,
+      search: search ?? this.search,
     );
   }
 
   @override
   List<Object?> get props =>
-      [status, products, idSelected, updateStatus, message];
+      [status, products, idSelected, updateStatus, message, search];
 }
