@@ -1,4 +1,4 @@
-import 'package:bloc_example/common/utils/extension/widget_extension.dart';
+import 'package:bloc_example/common/widget/extension/widget_extension.dart';
 import 'package:bloc_example/common/utils/search.dart';
 import 'package:bloc_example/common/widget/base_layout.dart';
 import 'package:bloc_example/common/widget/custom_text_form_filed.dart';
@@ -43,8 +43,14 @@ class _ProductScreenState extends State<ProductScreen> {
         print('search : ${state.search}');
         return BaseLayout(
             title: 'Products',
-            actions: const [
-              ThemeButton(),
+            actions: [
+              const ThemeButton(),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.add_shopping_cart,
+                ),
+              ).badge(count: 4),
             ],
             state: state,
             child: Column(

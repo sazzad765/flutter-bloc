@@ -1,6 +1,7 @@
+import 'package:bloc_example/common/widget/custom_button.dart';
 import 'package:bloc_example/common/widget/custom_card.dart';
 import 'package:bloc_example/common/widget/custom_image.dart';
-import 'package:bloc_example/common/utils/extension/widget_extension.dart';
+import 'package:bloc_example/common/widget/extension/widget_extension.dart';
 import 'package:bloc_example/common/utils/theme/custom_themes.dart';
 import 'package:bloc_example/common/utils/theme/text_theme.dart';
 import 'package:bloc_example/core/products/bloc/product_bloc.dart';
@@ -15,18 +16,20 @@ class ProductItem extends StatelessWidget {
     required this.product,
     this.onTap,
     this.onLongPress,
+    this.onCart,
   }) : super(key: key);
 
   final Product product;
   final void Function()? onTap;
   final void Function()? onLongPress;
+  final void Function()? onCart;
 
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
     return BlocSelector<ProductBloc, ProductState, bool>(
       selector: (state) =>
-      (state.status.isSelected && state.idSelected == product.id),
+          (state.status.isSelected && state.idSelected == product.id),
       builder: (context, state) {
         return CustomCard(
           onTap: onTap,
@@ -37,7 +40,7 @@ class ProductItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CustomImage(imageUrl: product.image ?? '',height: 200),
+              CustomImage(imageUrl: product.image ?? '', height: 150),
               CustomSpacing.verticalSpace(space: 8),
               Text(
                 product.title ?? '',
@@ -59,6 +62,19 @@ class ProductItem extends StatelessWidget {
                 ),
               ),
               CustomSpacing.verticalSpace(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomButton(
+                    text: 'Add to cart',
+                    onPressed: onCart,
+                  ).width(150).height(40),
+                  Text(
+                    '\$${product.price}',
+                    style: theme.textTheme.titleSmall,
+                  )
+                ],
+              ).padding(left: 16, right: 16, bottom: 16)
             ],
           ),
         );

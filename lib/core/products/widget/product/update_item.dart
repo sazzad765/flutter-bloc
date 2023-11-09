@@ -2,7 +2,7 @@ import 'package:bloc_example/common/widget/custom_button.dart';
 import 'package:bloc_example/common/widget/custom_dialog.dart';
 import 'package:bloc_example/common/widget/custom_text_form_filed.dart';
 import 'package:bloc_example/common/widget/custom_toast.dart';
-import 'package:bloc_example/common/utils/extension/widget_extension.dart';
+import 'package:bloc_example/common/widget/extension/widget_extension.dart';
 import 'package:bloc_example/common/utils/validator/form_validator.dart';
 import 'package:bloc_example/common/utils/theme/custom_themes.dart';
 import 'package:bloc_example/core/products/bloc/product_bloc.dart';
