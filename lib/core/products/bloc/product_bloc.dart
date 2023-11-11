@@ -5,6 +5,7 @@ import 'package:bloc_example/di/injection_service.dart';
 import 'package:bloc_example/models/product/product.dart';
 import 'package:bloc_example/common/utils/status.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'product_event.dart';
@@ -65,7 +66,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
   FutureOr<void> _onSearchProductEventToState(
       SearchProduct event, Emitter<ProductState> emit) {
-    print(event.query);
+    debugPrint(event.query);
     emit(state.copyWith(status: Status.search, search: event.query));
   }
 }
