@@ -1,4 +1,4 @@
-import 'package:bloc_example/service/shared_pref.dart';
+import 'package:bloc_example/common/service/shared_pref.dart';
 import 'package:get_storage/get_storage.dart';
 
 class SharePrefImpl extends SharePref {
