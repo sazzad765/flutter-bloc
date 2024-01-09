@@ -31,6 +31,7 @@ class ProductItem extends StatelessWidget {
       selector: (state) =>
           (state.status.isSelected && state.idSelected == product.id),
       builder: (context, state) {
+        final Product(:title, :image, :price, :description) = product;
         return CustomCard(
           onTap: onTap,
           onLongPress: onLongPress,
@@ -40,10 +41,10 @@ class ProductItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CustomImage(imageUrl: product.image ?? '', height: 150),
+              CustomImage(imageUrl: image ?? '', height: 150),
               CustomSpacing.verticalSpace(space: 8),
               Text(
-                product.title ?? '',
+                title ?? '',
                 style: theme.textTheme.boldFont,
                 textAlign: TextAlign.center,
                 maxLines: 2,
@@ -53,7 +54,7 @@ class ProductItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  product.description ?? '',
+                  description ?? '',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 12.0,
@@ -70,7 +71,7 @@ class ProductItem extends StatelessWidget {
                     onPressed: onCart,
                   ).width(150).height(40),
                   Text(
-                    '\$${product.price}',
+                    '\$${price}',
                     style: theme.textTheme.titleSmall,
                   )
                 ],

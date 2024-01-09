@@ -24,19 +24,29 @@ class BaseLayout extends StatelessWidget {
         title: title,
         actions: actions,
       ),
-      body: state.status.isLoading
-          ? const Center(
-              child: CircularProgressIndicator(color: Colors.red),
-            )
-          : state.status.isInitial
-              ? const Center(
-                  child: CircularProgressIndicator(color: Colors.red),
-                )
-              : state.status.isError
-                  ? const Center(
-                      child: Text("No data found!"),
-                    )
-                  : child,
+      body: switch (state) {
+        _ when state.status.isLoading || state.status.isInitial => const Center(
+            child: CircularProgressIndicator(color: Colors.red),
+          ),
+        _ when state.status.isError => const Center(
+            child: Text("No data found!"),
+          ),
+        _ => child,
+      },
+
+      // state.status.isLoading
+      //     ? const Center(
+      //         child: CircularProgressIndicator(color: Colors.red),
+      //       )
+      //     : state.status.isInitial
+      //         ? const Center(
+      //             child: CircularProgressIndicator(color: Colors.red),
+      //           )
+      //         : state.status.isError
+      //             ? const Center(
+      //                 child: Text("No data found!"),
+      //               )
+      //             : child,
     );
   }
 }
